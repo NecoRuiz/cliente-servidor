@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class ImplementacionRMI extends UnicastRemoteObject implements ConstelacionesInterface {
 
     private ArrayList<Constelacion> almacenConstelaciones;
+    private ArrayList<Planeta> almacenPlanetas;
 
     public ImplementacionRMI() throws RemoteException {
 
@@ -45,10 +46,30 @@ public class ImplementacionRMI extends UnicastRemoteObject implements Constelaci
 
         almacenConstelaciones.add(new Constelacion("Géminis", "Destaca por sus dos gemelos, las estrellas Cástor y Pólux."));
 
+
+
+        almacenPlanetas = new ArrayList<>();
+
+        almacenPlanetas.add(new Planeta("Mercurio", "El planeta más cercano al Sol. Es un planeta rocoso y muy caliente."));
+
+        almacenPlanetas.add(new Planeta("Venus", "El segundo planeta del sistema solar. Tiene una atmósfera densa y temperaturas extremas."));
+
+        almacenPlanetas.add(new Planeta("Tierra", "Nuestro planeta, el tercero del sistema solar. Tiene agua en estado líquido y vida."));
+
+        almacenPlanetas.add(new Planeta("Marte", "El cuarto planeta del sistema solar, conocido como el planeta rojo. Tiene una atmósfera muy delgada."));
+
+        almacenPlanetas.add(new Planeta("Júpiter", "El quinto planeta del sistema solar y el más grande de todos. Es un gigante gaseoso."));
+
+        almacenPlanetas.add(new Planeta("Saturno", "El sexto planeta del sistema solar, conocido por sus impresionantes anillos de hielo y roca."));
+
+        almacenPlanetas.add(new Planeta("Urano", "El séptimo planeta del sistema solar. Es un gigante helado y tiene un eje de rotación muy inclinado."));
+
+        almacenPlanetas.add(new Planeta("Neptuno", "El octavo y último planeta del sistema solar. Es un gigante helado y tiene vientos extremadamente fuertes."));
+
     }
 
     @Override
-    public String obtenerInfo(String nombre) throws RemoteException {
+    public String obtenerInfoConstelacion(String nombre) throws RemoteException {
 //en el almacén va a encontrar un item Constelación
         for (Constelacion item : almacenConstelaciones){
 //si el nombre que ingresa el cliente coicide con el del almacén
@@ -61,5 +82,18 @@ public class ImplementacionRMI extends UnicastRemoteObject implements Constelaci
         }
 
         return "Constelación no encontrada";
+    }
+
+    @Override
+    public String obtenerInfoPlaneta(String nombre) throws RemoteException {
+        //en el almacén va a encontrar un item Planeta
+        for (Planeta item : almacenPlanetas) {
+            //si el nombre que ingresa el cliente coicide con el del almacén
+            if (item.getNombre().equalsIgnoreCase(nombre)) {
+                //devuelve la descripción del Planeta
+                return item.getObservaciones();
+            }
+        }
+        return "Planeta no encontrado";
     }
 }

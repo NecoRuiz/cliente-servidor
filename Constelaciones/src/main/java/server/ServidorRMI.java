@@ -30,7 +30,7 @@ public class ServidorRMI {
             //al registro le paso el SERVICIO con el alias "Constelaciones"
             //"Constelaciones"--->Alias que tendrá que cononocer el cliente para poder usar el servicio
             registro.rebind("Constelaciones", servicio);
-
+            System.out.println("Servidor RMI en marcha, esperando solicitudes...");
             
 
 

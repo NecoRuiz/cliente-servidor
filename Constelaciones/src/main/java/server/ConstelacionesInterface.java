@@ -9,5 +9,7 @@ import java.rmi.RemoteException;
 
 public interface ConstelacionesInterface extends Remote {
 
-    String obtenerInfo(String nombre) throws RemoteException;
+    String obtenerInfoConstelacion(String nombre) throws RemoteException;
+
+    String obtenerInfoPlaneta(String nombre) throws RemoteException;
 }
